@@ -13,7 +13,12 @@ export default function FirebaseStatus() {
     if (!auth) return;
     return onAuthStateChanged(
       auth,
-      (user) => setState(user ? `متصل · ${user.email ?? "مستخدم"}` : "Firebase متصل · لا يوجد مستخدم مسجل"),
+      (user) =>
+        setState(
+          user
+            ? `متصل · ${user.email ?? "مستخدم"}`
+            : "Firebase متصل · لا يوجد مستخدم مسجل",
+        ),
       () => setState("تعذر الاتصال بـ Firebase"),
     );
   }, []);
